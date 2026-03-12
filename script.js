@@ -255,14 +255,14 @@ function viewCertificate(certName, certId) {
     
     // Configuration des chemins PDF
     const certificatePDFs = {
-        'unchk': 'certificats/forcen-cybersecurity.pdf',
-        'ccna': 'certificats/ccna-200-301.pdf',
-        'ibm': 'certificats/ibm-cybersecurity.pdf',
-        'microsoft': 'certificats/microsoft-cybersecurity-analyst.pdf',
-        'google': 'certificats/google-play-it-safe.pdf',
-        'google-pro': 'certificats/google-cybersecurity-professional.pdf',
-        'datacamp': 'certificats/datacamp-deep-learning.pdf',
-        'ceh': 'certificats/ceh-certified-ethical-hacker.pdf'
+        'unchk': 'certificat/forcen-cybersecurity.pdf',
+        'ccna': 'certificat/ccna-200-301.pdf',
+        'ibm': 'certificat/ibm-cybersecurity.pdf',
+        'microsoft': 'certificat/microsoft-cybersecurity-analyst.pdf',
+        'google': 'certificat/google-play-it-safe.pdf',
+        'google-pro': 'certificat/google-cybersecurity-professional.pdf',
+        'datacamp': 'certificat/datacamp-deep-learning.pdf',
+        'ceh': 'certificat/ceh-certified-ethical-hacker.pdf'
     };
     
     // Afficher un loader pendant le chargement
@@ -375,14 +375,14 @@ function downloadCertificate() {
     if (!currentCertificate) return;
     
     const certificatePDFs = {
-        'unchk': 'certificats/forcen-cybersecurity.pdf',
-        'ccna': 'certificats/ccna-200-301.pdf',
-        'ibm': 'certificats/ibm-cybersecurity.pdf',
-        'microsoft': 'certificats/microsoft-cybersecurity-analyst.pdf',
-        'google': 'certificats/google-play-it-safe.pdf',
-        'google-pro': 'certificats/google-cybersecurity-professional.pdf',
-        'datacamp': 'certificats/datacamp-deep-learning.pdf',
-        'ceh': 'certificats/ceh-certified-ethical-hacker.pdf'
+        'unchk': 'certificat/forcen-cybersecurity.pdf',
+        'ccna': 'certificat/ccna-200-301.pdf',
+        'ibm': 'certificat/ibm-cybersecurity.pdf',
+        'microsoft': 'certificat/microsoft-cybersecurity-analyst.pdf',
+        'google': 'certificat/google-play-it-safe.pdf',
+        'google-pro': 'certificat/google-cybersecurity-professional.pdf',
+        'datacamp': 'certificat/datacamp-deep-learning.pdf',
+        'ceh': 'certificat/ceh-certified-ethical-hacker.pdf'
     };
     
     const pdfPath = certificatePDFs[currentCertificate.id];
