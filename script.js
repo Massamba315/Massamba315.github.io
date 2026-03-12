@@ -278,11 +278,24 @@ function viewCertificate(certName, certId) {
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
     
+    // Réinitialiser le footer avec les bons boutons
+    const modalFooter = document.querySelector('.modal-footer');
+    if (modalFooter) {
+        modalFooter.innerHTML = `
+            <button class="btn btn-primary" onclick="downloadCertificate()">
+                <i class="fas fa-download"></i> Télécharger le PDF
+            </button>
+            <button class="btn btn-outline" onclick="closeModal()">
+                <i class="fas fa-times"></i> Fermer
+            </button>
+        `;
+    }
+    
     // Vérifier si le PDF existe
     if (certificatePDFs[certId]) {
         const pdfPath = certificatePDFs[certId];
         
-        // Créer le viewer PDF
+        // Créer le viewer PDF (sans les boutons de contrôle supplémentaires)
         setTimeout(() => {
             display.innerHTML = `
                 <div class="pdf-container">
@@ -293,28 +306,7 @@ function viewCertificate(certName, certId) {
                         title="${certName}"
                     ></iframe>
                 </div>
-                <div class="pdf-controls">
-                    <a href="${pdfPath}" download class="btn btn-primary" onclick="event.stopPropagation()">
-                        <i class="fas fa-download"></i> Télécharger PDF
-                    </a>
-                    <a href="${pdfPath}" target="_blank" class="btn btn-outline" onclick="event.stopPropagation()">
-                        <i class="fas fa-external-link-alt"></i> Ouvrir dans un nouvel onglet
-                    </a>
-                </div>
             `;
-            
-            // Ajouter les contrôles au footer du modal
-            const modalFooter = document.querySelector('.modal-footer');
-            if (modalFooter) {
-                modalFooter.innerHTML = `
-                    <button class="btn btn-primary" onclick="downloadCertificate()">
-                        <i class="fas fa-download"></i> Télécharger
-                    </button>
-                    <button class="btn btn-outline" onclick="closeModal()">
-                        <i class="fas fa-times"></i> Fermer
-                    </button>
-                `;
-            }
         }, 500);
     } else {
         // Afficher un message si le PDF n'est pas trouvé
@@ -328,10 +320,12 @@ function viewCertificate(certName, certId) {
                 </div>
             `;
             
-            // Cacher les boutons de téléchargement
-            const modalFooter = document.querySelector('.modal-footer');
+            // Désactiver le bouton de téléchargement dans le footer
             if (modalFooter) {
                 modalFooter.innerHTML = `
+                    <button class="btn btn-primary" onclick="downloadCertificate()" disabled style="opacity: 0.5; cursor: not-allowed;">
+                        <i class="fas fa-download"></i> Non disponible
+                    </button>
                     <button class="btn btn-outline" onclick="closeModal()">
                         <i class="fas fa-times"></i> Fermer
                     </button>
@@ -360,7 +354,7 @@ function closeModal() {
     if (modalFooter) {
         modalFooter.innerHTML = `
             <button class="btn btn-primary" onclick="downloadCertificate()">
-                <i class="fas fa-download"></i> Télécharger
+                <i class="fas fa-download"></i> Télécharger le PDF
             </button>
             <button class="btn btn-outline" onclick="closeModal()">
                 <i class="fas fa-times"></i> Fermer
@@ -396,14 +390,14 @@ function downloadCertificate() {
         link.click();
         document.body.removeChild(link);
         
-        // Afficher une notification (optionnel)
+        // Afficher une notification
         showNotification(`Téléchargement de "${currentCertificate.name}" démarré`);
     } else {
         alert('Désolé, ce certificat n\'est pas disponible au téléchargement pour le moment.');
     }
 }
 
-// Fonction pour afficher une notification (optionnel)
+// Fonction pour afficher une notification
 function showNotification(message) {
     // Créer l'élément de notification
     const notification = document.createElement('div');
