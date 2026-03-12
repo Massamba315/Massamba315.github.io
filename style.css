@@ -566,7 +566,8 @@ body {
 }
 
 .timeline-content {
-    width: calc(50% - 50px);
+    width: 45%;
+    box-sizing: border-box;
     padding: 1.8rem;
     background: var(--white);
     border-radius: 15px;
@@ -753,6 +754,7 @@ body {
 .timeline-content.no-arrow::before {
     display: none;
 }
+
 /* Certifications Grid */
 .certs-grid {
     display: grid;
@@ -1143,4 +1145,5 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
 
