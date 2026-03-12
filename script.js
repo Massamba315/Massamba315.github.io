@@ -250,75 +250,180 @@ function viewCertificate(certName, certId) {
     document.getElementById('modal-title').textContent = certName;
     document.getElementById('certificate-name').textContent = certName;
     
-    // Simuler le chargement du certificat
+    // Récupérer l'élément d'affichage
     const display = document.getElementById('certificate-display');
     
-    // Vous pouvez remplacer ceci par de vraies images de certificats
-    // Exemple avec des placeholders ou des liens vers vos certificats
-    const certificateImages = {
-        'unchk': 'certificat/Certificat Cisco Implementation and Administration (CCNA 200-301) - LOGICAL OPERATIONS.pdf',
-        'ccna': 'certificat/Certificat Cisco Implementation and Administration (CCNA 200-301) - LOGICAL OPERATIONS.pdf',
-        'ibm': 'path/to/ibm-cert.jpg',
-        'microsoft': 'path/to/microsoft-cert.jpg',
-        'google': 'path/to/google-cert.jpg',
-        'google-pro': 'path/to/google-pro-cert.jpg',
-        'datacamp': 'path/to/datacamp-cert.jpg',
-        'ceh': 'path/to/ceh-cert.jpg'
+    // Configuration des chemins PDF
+    const certificatePDFs = {
+        'unchk': 'certificats/forcen-cybersecurity.pdf',
+        'ccna': 'certificats/ccna-200-301.pdf',
+        'ibm': 'certificats/ibm-cybersecurity.pdf',
+        'microsoft': 'certificats/microsoft-cybersecurity-analyst.pdf',
+        'google': 'certificats/google-play-it-safe.pdf',
+        'google-pro': 'certificats/google-cybersecurity-professional.pdf',
+        'datacamp': 'certificats/datacamp-deep-learning.pdf',
+        'ceh': 'certificats/ceh-certified-ethical-hacker.pdf'
     };
     
     // Afficher un loader pendant le chargement
     display.innerHTML = `
-        <div class="certificate-placeholder">
+        <div class="certificate-loader">
             <i class="fas fa-spinner fa-spin"></i>
-            <p>Chargement du certificat...</p>
+            <p>Chargement du certificat PDF...</p>
         </div>
     `;
     
-    // Simuler un délai de chargement (à remplacer par un vrai chargement)
-    setTimeout(() => {
-        // Vérifier si une image existe pour ce certificat
-        if (certificateImages[certId]) {
-            // Afficher l'image du certificat
-            display.innerHTML = `<img src="${certificateImages[certId]}" alt="${certName}" class="certificate-image">`;
-        } else {
-            // Afficher un placeholder
+    // Afficher le modal immédiatement
+    const modal = document.getElementById('certModal');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Vérifier si le PDF existe
+    if (certificatePDFs[certId]) {
+        const pdfPath = certificatePDFs[certId];
+        
+        // Créer le viewer PDF
+        setTimeout(() => {
             display.innerHTML = `
-                <div class="certificate-placeholder">
-                    <i class="fas fa-certificate"></i>
-                    <p>${certName}</p>
-                    <small style="color: var(--gray);">Certificat disponible sur demande</small>
+                <div class="pdf-container">
+                    <iframe 
+                        src="${pdfPath}" 
+                        class="pdf-viewer" 
+                        frameborder="0"
+                        title="${certName}"
+                    ></iframe>
+                </div>
+                <div class="pdf-controls">
+                    <a href="${pdfPath}" download class="btn btn-primary" onclick="event.stopPropagation()">
+                        <i class="fas fa-download"></i> Télécharger PDF
+                    </a>
+                    <a href="${pdfPath}" target="_blank" class="btn btn-outline" onclick="event.stopPropagation()">
+                        <i class="fas fa-external-link-alt"></i> Ouvrir dans un nouvel onglet
+                    </a>
                 </div>
             `;
-        }
-    }, 1000);
-    
-    // Afficher le modal
-    document.getElementById('certModal').style.display = 'block';
-    
-    // Empêcher le défilement du body
-    document.body.style.overflow = 'hidden';
+            
+            // Ajouter les contrôles au footer du modal
+            const modalFooter = document.querySelector('.modal-footer');
+            if (modalFooter) {
+                modalFooter.innerHTML = `
+                    <button class="btn btn-primary" onclick="downloadCertificate()">
+                        <i class="fas fa-download"></i> Télécharger
+                    </button>
+                    <button class="btn btn-outline" onclick="closeModal()">
+                        <i class="fas fa-times"></i> Fermer
+                    </button>
+                `;
+            }
+        }, 500);
+    } else {
+        // Afficher un message si le PDF n'est pas trouvé
+        setTimeout(() => {
+            display.innerHTML = `
+                <div class="certificate-placeholder">
+                    <i class="fas fa-exclamation-triangle" style="color: #f39c12;"></i>
+                    <p>${certName}</p>
+                    <p style="color: var(--gray); font-size: 0.9rem;">Certificat non disponible pour le moment</p>
+                    <small>Veuillez me contacter pour obtenir une copie</small>
+                </div>
+            `;
+            
+            // Cacher les boutons de téléchargement
+            const modalFooter = document.querySelector('.modal-footer');
+            if (modalFooter) {
+                modalFooter.innerHTML = `
+                    <button class="btn btn-outline" onclick="closeModal()">
+                        <i class="fas fa-times"></i> Fermer
+                    </button>
+                `;
+            }
+        }, 500);
+    }
 }
 
 function closeModal() {
-    document.getElementById('certModal').style.display = 'none';
+    const modal = document.getElementById('certModal');
+    modal.style.display = 'none';
     document.body.style.overflow = 'auto';
+    
+    // Nettoyer l'affichage
+    const display = document.getElementById('certificate-display');
+    display.innerHTML = `
+        <div class="certificate-placeholder">
+            <i class="fas fa-certificate"></i>
+            <p id="certificate-name">Certificat</p>
+        </div>
+    `;
+    
+    // Réinitialiser le footer
+    const modalFooter = document.querySelector('.modal-footer');
+    if (modalFooter) {
+        modalFooter.innerHTML = `
+            <button class="btn btn-primary" onclick="downloadCertificate()">
+                <i class="fas fa-download"></i> Télécharger
+            </button>
+            <button class="btn btn-outline" onclick="closeModal()">
+                <i class="fas fa-times"></i> Fermer
+            </button>
+        `;
+    }
+    
     currentCertificate = null;
 }
 
 function downloadCertificate() {
     if (!currentCertificate) return;
     
-    // Simuler un téléchargement
-    alert(`Téléchargement du certificat "${currentCertificate.name}"...`);
+    const certificatePDFs = {
+        'unchk': 'certificats/forcen-cybersecurity.pdf',
+        'ccna': 'certificats/ccna-200-301.pdf',
+        'ibm': 'certificats/ibm-cybersecurity.pdf',
+        'microsoft': 'certificats/microsoft-cybersecurity-analyst.pdf',
+        'google': 'certificats/google-play-it-safe.pdf',
+        'google-pro': 'certificats/google-cybersecurity-professional.pdf',
+        'datacamp': 'certificats/datacamp-deep-learning.pdf',
+        'ceh': 'certificats/ceh-certified-ethical-hacker.pdf'
+    };
     
-    // Ici vous pouvez ajouter la logique de téléchargement réel
-    // Par exemple : window.open(`/certificates/${currentCertificate.id}.pdf`, '_blank');
+    const pdfPath = certificatePDFs[currentCertificate.id];
     
-    // Simulation de téléchargement
-    const link = document.createElement('a');
-    link.href = '#'; // Remplacer par le vrai lien du certificat
-    link.download = `${currentCertificate.name}.pdf`;
-    link.click();
+    if (pdfPath) {
+        // Créer un lien de téléchargement
+        const link = document.createElement('a');
+        link.href = pdfPath;
+        link.download = `${currentCertificate.name}.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Afficher une notification (optionnel)
+        showNotification(`Téléchargement de "${currentCertificate.name}" démarré`);
+    } else {
+        alert('Désolé, ce certificat n\'est pas disponible au téléchargement pour le moment.');
+    }
+}
+
+// Fonction pour afficher une notification (optionnel)
+function showNotification(message) {
+    // Créer l'élément de notification
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <span>${message}</span>
+    `;
+    
+    // Ajouter au body
+    document.body.appendChild(notification);
+    
+    // Animation d'entrée
+    setTimeout(() => notification.classList.add('show'), 100);
+    
+    // Supprimer après 3 secondes
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
 }
 
 // Fermer le modal si on clique en dehors
