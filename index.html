@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Massamba Ndiaye - Ingénieur Informatique</title>
+    <title>Massamba Ndiaye - Ingénieur Réseaux & Cybersécurité</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -11,31 +11,90 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">MN</div>
+            <div class="logo">
+                <span class="logo-text">M<span class="logo-accent">N</span></span>
+            </div>
             <ul class="nav-menu">
+                <li><a href="#accueil" class="active">Accueil</a></li>
                 <li><a href="#about">À propos</a></li>
                 <li><a href="#competences">Compétences</a></li>
                 <li><a href="#parcours">Parcours</a></li>
+                <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#projets">Projets</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </nav>
 
     <!-- Header / Hero Section -->
-    <header class="hero">
+    <header id="accueil" class="hero">
         <div class="hero-content">
-            <h1>MASSAMBA NDIAYE</h1>
-            <p class="hero-subtitle">Ingénieur Informatique | Réseaux & Cybersécurité</p>
-            <p class="hero-location"><i class="fas fa-map-marker-alt"></i> Pout, Thiès, Sénégal</p>
-            <div class="hero-contact">
-                <span><i class="fas fa-phone"></i> 76 356 95 78</span>
-                <span><i class="fas fa-envelope"></i> ndmassamba03@gmail.com</span>
+            <div class="hero-badge">Ingénieur Informatique</div>
+            <h1 class="hero-title">MASSAMBA <span class="highlight">NDIAYE</span></h1>
+            <p class="hero-subtitle">Expert en Réseaux & Cybersécurité | Consultant Sécurité</p>
+            
+            <div class="hero-info">
+                <div class="hero-info-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Né le 07/08/1999 à Keur Matar Gueye</span>
+                </div>
+                <div class="hero-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Pout, Thiès, Sénégal</span>
+                </div>
+                <div class="hero-info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>76 356 95 78</span>
+                </div>
+                <div class="hero-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ndmassamba03@gmail.com</span>
+                </div>
             </div>
+
             <div class="hero-social">
-                <a href="https://www.linkedin.com/in/massamba-ndiaye-4952a32aa" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/massamba-ndiaye-4952a32aa" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-medium"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-stack-overflow"></i>
+                </a>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">Me contacter</a>
+                <a href="#" class="btn btn-outline">Télécharger CV</a>
+            </div>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat-card">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Années d'études</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Certifications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12+</div>
+                <div class="stat-label">Projets réalisés</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Dévouement</div>
             </div>
         </div>
     </header>
@@ -43,24 +102,59 @@
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2><i class="fas fa-user"></i> À propos</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Jeune ingénieur basé dans la région de Thiès, dynamique et doté d'un fort esprit d'apprentissage. Désireux de mettre mes solides compétences en administration systèmes, réseaux et cybersécurité au service des MPME locales dans le cadre de l'initiative du MEFPT.</p>
-                    <p>Objectif : contribuer activement tout en renforçant mon employabilité par une immersion professionnelle concrète.</p>
+            <div class="section-header">
+                <span class="section-subtitle">Présentation</span>
+                <h2 class="section-title">À propos de moi</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="image-frame">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="image-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Disponible immédiatement</span>
+                    </div>
                 </div>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label">Certifications</span>
+
+                <div class="about-content">
+                    <h3>Jeune ingénieur dynamique basé à Thiès</h3>
+                    
+                    <p>Jeune ingénieur basé dans la région de Thiès, dynamique et doté d'un fort esprit d'apprentissage. Désireux de mettre mes solides compétences en administration systèmes, réseaux et cybersécurité au service des MPME locales dans le cadre de l'initiative du MEFPT.</p>
+                    
+                    <p>Objectif : contribuer activement tout en renforçant mon employabilité par une immersion professionnelle concrète. Passionné par les nouvelles technologies et la sécurisation des infrastructures critiques.</p>
+
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Administration systèmes</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Sécurité réseau</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Supervision</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Analyse de vulnérabilités</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Cloud computing</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>DevOps</span>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">3</span>
-                        <span class="stat-label">Projets majeurs</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">Master</span>
-                        <span class="stat-label">Réseaux & Sécurité</span>
+
+                    <div class="about-cta">
+                        <a href="#contact" class="btn btn-primary">Discutons de vos projets</a>
                     </div>
                 </div>
             </div>
@@ -68,38 +162,253 @@
     </section>
 
     <!-- Compétences Section -->
-    <section id="competences" class="section bg-light">
+    <section id="competences" class="section section-dark">
         <div class="container">
-            <h2><i class="fas fa-cogs"></i> Compétences</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Réseaux & Systèmes</h3>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-check-circle"></i> Administration Linux/Windows Server</li>
-                        <li><i class="fas fa-check-circle"></i> Configuration LAN/WAN</li>
-                        <li><i class="fas fa-check-circle"></i> CCNA (en cours)</li>
-                        <li><i class="fas fa-check-circle"></i> Monitoring (Nagios, Zabbix)</li>
-                        <li><i class="fas fa-check-circle"></i> Wireshark, Analyse réseau</li>
-                    </ul>
+            <div class="section-header">
+                <span class="section-subtitle">Expertise</span>
+                <h2 class="section-title">Mes compétences</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3><i class="fas fa-network-wired"></i> Réseaux & Télécoms</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>CCNA (200-301)</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Configuration LAN/WAN</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Protocoles TCP/IP</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Wireshark / Analyse trafic</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>VPN / VLAN</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>IPv6</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Cybersécurité</h3>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-shield-alt"></i> Analyse des vulnérabilités</li>
-                        <li><i class="fas fa-shield-alt"></i> Google Cybersecurity</li>
-                        <li><i class="fas fa-shield-alt"></i> Microsoft Security Analyst</li>
-                        <li><i class="fas fa-shield-alt"></i> IBM Cybersecurity</li>
-                        <li><i class="fas fa-shield-alt"></i> FORCEN (en cours)</li>
-                    </ul>
+
+                <div class="skills-category">
+                    <h3><i class="fas fa-shield-alt"></i> Cybersécurité</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Analyse des vulnérabilités</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Sécurité des systèmes</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Cryptographie</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Politiques de sécurité</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Forensique numérique</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Ethical Hacking</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Développement</h3>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-code"></i> Python, C/C++</li>
-                        <li><i class="fas fa-code"></i> Java</li>
-                        <li><i class="fas fa-code"></i> PyTorch / Deep Learning</li>
-                        <li><i class="fas fa-code"></i> Scripts d'automatisation</li>
-                    </ul>
+
+                <div class="skills-category">
+                    <h3><i class="fas fa-code"></i> Développement & Scripting</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Python</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>C/C++</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Java</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>PyTorch</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Bash / PowerShell</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>SQL</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3><i class="fas fa-server"></i> Administration systèmes & Monitoring</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Linux (Ubuntu, CentOS)</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Windows Server</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Nagios</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Zabbix</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Docker / Virtualisation</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Cloud (AWS/Azure)</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -108,134 +417,390 @@
     <!-- Formation Section -->
     <section id="parcours" class="section">
         <div class="container">
-            <h2><i class="fas fa-graduation-cap"></i> Formation</h2>
+            <div class="section-header">
+                <span class="section-subtitle">Formation académique</span>
+                <h2 class="section-title">Mon parcours</h2>
+                <div class="section-line"></div>
+            </div>
+
             <div class="timeline">
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-date">2023 - 2024</div>
                     <div class="timeline-content">
                         <h3>Master 2 Réseaux, Sécurité et Systèmes Distribués</h3>
-                        <p>Université Gaston Berger (UGB)</p>
+                        <p class="timeline-location">Université Gaston Berger (UGB)</p>
+                        <p class="timeline-description">Spécialisation en sécurité des infrastructures critiques et systèmes distribués. Mémoire sur l'analyse des vulnérabilités des réseaux d'entreprise.</p>
                     </div>
                 </div>
+
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-date">2022 - 2023</div>
                     <div class="timeline-content">
                         <h3>Master 1 Réseaux, Sécurité et Systèmes Distribués</h3>
-                        <p>Université Gaston Berger (UGB)</p>
+                        <p class="timeline-location">Université Gaston Berger (UGB)</p>
+                        <p class="timeline-description">Fondamentaux des réseaux avancés, cryptographie, sécurité des systèmes d'information.</p>
                     </div>
                 </div>
+
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-date">2021 - 2022</div>
                     <div class="timeline-content">
-                        <h3>Licence 3 Informatique</h3>
-                        <p>Université Gaston Berger (UGB)</p>
+                        <h3>Licence 3 Informatique : Système d'Information</h3>
+                        <p class="timeline-location">Université Gaston Berger (UGB)</p>
+                        <p class="timeline-description">Programmation avancée, bases de données, architectures logicielles.</p>
                     </div>
                 </div>
+
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2020 - 2021</div>
+                    <div class="timeline-content">
+                        <h3>Licence 2 Informatique : Système d'Information</h3>
+                        <p class="timeline-location">Université Gaston Berger (UGB)</p>
+                        <p class="timeline-description">Algorithmique, structures de données, introduction aux réseaux.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2019 - 2020</div>
+                    <div class="timeline-content">
+                        <h3>Licence 1 Mathématique Appliquée et Science Sociale</h3>
+                        <p class="timeline-location">Université Gaston Berger (UGB)</p>
+                        <p class="timeline-description">Bases mathématiques pour l'informatique, statistiques, économie numérique.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-date">2019</div>
                     <div class="timeline-content">
-                        <h3>Baccalauréat Série S2</h3>
-                        <p>Lycée de Pout</p>
+                        <h3>Baccalauréat – Série S2</h3>
+                        <p class="timeline-location">Lycée de Pout</p>
+                        <p class="timeline-description">Mention Assez Bien - Spécialité Sciences de l'Ingénieur</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications -->
-    <section id="certifications" class="section bg-light">
+    <!-- Certifications Section -->
+    <section id="certifications" class="section section-dark">
         <div class="container">
-            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+            <div class="section-header">
+                <span class="section-subtitle">Accréditations</span>
+                <h2 class="section-title">Certifications professionnelles</h2>
+                <div class="section-line"></div>
+            </div>
+
             <div class="certs-grid">
                 <div class="cert-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>FORCEN Cybersecurity</h4>
-                    <p>UNCHK | 02/2026 - En cours</p>
+                    <div class="cert-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>FORCEN Cybersecurity</h4>
+                        <p class="cert-issuer">UNCHK</p>
+                        <p class="cert-date">02/2026 - En cours</p>
+                        <div class="cert-badge">En cours</div>
+                    </div>
                 </div>
+
                 <div class="cert-card">
-                    <i class="fas fa-network-wired"></i>
-                    <h4>CCNA 200-301</h4>
-                    <p>CEO - Logical Operations</p>
+                    <div class="cert-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>CCNA 200-301</h4>
+                        <p class="cert-issuer">CEO - Logical Operations</p>
+                        <p class="cert-date">Implementation and Administration</p>
+                        <div class="cert-badge">Préparation</div>
+                    </div>
                 </div>
+
                 <div class="cert-card">
-                    <i class="fab fa-google"></i>
-                    <h4>Google Cybersecurity</h4>
-                    <p>Professional Certificate | 02/2026</p>
+                    <div class="cert-icon">
+                        <i class="fab fa-ibm"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>IBM Cybersecurity</h4>
+                        <p class="cert-issuer">IBM SkillsBuild</p>
+                        <p class="cert-date">12/2025 - 03/2026</p>
+                        <div class="cert-badge">Validé</div>
+                    </div>
                 </div>
+
                 <div class="cert-card">
-                    <i class="fab fa-microsoft"></i>
-                    <h4>Microsoft Cybersecurity Analyst</h4>
-                    <p>Microsoft | 02/2026</p>
+                    <div class="cert-icon">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>Microsoft Cybersecurity Analyst</h4>
+                        <p class="cert-issuer">Microsoft</p>
+                        <p class="cert-date">02/2026</p>
+                        <div class="cert-badge">Validé</div>
+                    </div>
                 </div>
+
                 <div class="cert-card">
-                    <i class="fab fa-ibm"></i>
-                    <h4>IBM Cybersecurity</h4>
-                    <p>IBM SkillsBuild | 12/2025 - 03/2026</p>
+                    <div class="cert-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>Play It Safe: Manage Security Risks</h4>
+                        <p class="cert-issuer">Google</p>
+                        <p class="cert-date">02/2026</p>
+                        <div class="cert-badge">Validé</div>
+                    </div>
                 </div>
+
                 <div class="cert-card">
-                    <i class="fas fa-brain"></i>
-                    <h4>Deep Learning with PyTorch</h4>
-                    <p>DataCamp | 08/2025 - 02/2026</p>
+                    <div class="cert-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>Google Cybersecurity Professional</h4>
+                        <p class="cert-issuer">Google</p>
+                        <p class="cert-date">02/2026</p>
+                        <div class="cert-badge">Validé</div>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>Deep Learning with PyTorch</h4>
+                        <p class="cert-issuer">DataCamp</p>
+                        <p class="cert-date">08/2025 - 02/2026</p>
+                        <div class="cert-badge">Validé</div>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h4>Certified Ethical Hacker</h4>
+                        <p class="cert-issuer">EC-Council</p>
+                        <p class="cert-date">En préparation</p>
+                        <div class="cert-badge">2026</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projets -->
+    <!-- Projets Section -->
     <section id="projets" class="section">
         <div class="container">
-            <h2><i class="fas fa-project-diagram"></i> Projets</h2>
+            <div class="section-header">
+                <span class="section-subtitle">Réalisations</span>
+                <h2 class="section-title">Mes projets</h2>
+                <div class="section-line"></div>
+            </div>
+
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Audit de sécurité UGB</h3>
-                    <p>Analyse de la sécurité du réseau de l'Université Gaston Berger afin d'identifier les vulnérabilités et proposer des solutions.</p>
-                    <div class="project-tags">
-                        <span>Sécurité</span>
-                        <span>Réseau</span>
-                        <span>Audit</span>
+                    <div class="project-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Audit de sécurité UGB</h3>
+                        <p class="project-description">Analyse complète de la sécurité du réseau de l'Université Gaston Berger afin d'identifier les vulnérabilités critiques et proposer des solutions de remédiation.</p>
+                        <div class="project-tags">
+                            <span>Sécurité</span>
+                            <span>Audit</span>
+                            <span>Réseau</span>
+                            <span>Nmap</span>
+                            <span>Wireshark</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
                     </div>
                 </div>
+
                 <div class="project-card">
-                    <div class="project-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Supervision réseau</h3>
-                    <p>Mise en place d'un système de monitoring avec Nagios et Zabbix, alertes automatiques et scripts Python d'automatisation.</p>
-                    <div class="project-tags">
-                        <span>Nagios</span>
-                        <span>Zabbix</span>
-                        <span>Python</span>
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Supervision réseau avec Nagios & Zabbix</h3>
+                        <p class="project-description">Mise en place d'un système de monitoring complet pour une PME avec alertes automatiques, dashboards personnalisés et scripts Python d'automatisation des tâches.</p>
+                        <div class="project-tags">
+                            <span>Nagios</span>
+                            <span>Zabbix</span>
+                            <span>Python</span>
+                            <span>Bash</span>
+                            <span>Monitoring</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
                     </div>
                 </div>
+
                 <div class="project-card">
-                    <div class="project-icon"><i class="fas fa-code"></i></div>
-                    <h3>Site web de restauration</h3>
-                    <p>Développement et mise en ligne d'un site web de présentation pour un restaurant.</p>
-                    <div class="project-tags">
-                        <span>HTML/CSS</span>
-                        <span>JavaScript</span>
-                        <span>PHP</span>
+                    <div class="project-image">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Site web de restauration</h3>
+                        <p class="project-description">Développement et mise en ligne d'un site web vitrine pour un restaurant avec système de réservation en ligne, menu interactif et optimisation SEO.</p>
+                        <div class="project-tags">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>Bootstrap</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Solution de chiffrement pour PME</h3>
+                        <p class="project-description">Développement d'une solution de chiffrement de fichiers pour petites entreprises utilisant l'algorithme AES-256 et gestion des clés sécurisée.</p>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>Cryptographie</span>
+                            <span>AES</span>
+                            <span>Sécurité</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Détection d'intrusion avec IA</h3>
+                        <p class="project-description">Implémentation d'un système de détection d'intrusion basé sur l'apprentissage profond (PyTorch) pour analyser le trafic réseau en temps réel.</p>
+                        <div class="project-tags">
+                            <span>IA</span>
+                            <span>PyTorch</span>
+                            <span>Deep Learning</span>
+                            <span>IDS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Migration Cloud & Sécurité</h3>
+                        <p class="project-description">Accompagnement d'une PME dans sa migration vers le cloud Azure avec mise en place des politiques de sécurité et sauvegardes automatisées.</p>
+                        <div class="project-tags">
+                            <span>Cloud</span>
+                            <span>Azure</span>
+                            <span>Sécurité</span>
+                            <span>DevOps</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section bg-light">
+    <!-- Contact Section -->
+    <section id="contact" class="section section-dark">
         <div class="container">
-            <h2><i class="fas fa-envelope"></i> Contact</h2>
-            <div class="contact-content">
+            <div class="section-header">
+                <span class="section-subtitle">Collaboration</span>
+                <h2 class="section-title">Parlons de vos projets</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="contact-container">
                 <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> Pout, Thiès, Sénégal</p>
-                    <p><i class="fas fa-phone"></i> 76 356 95 78</p>
-                    <p><i class="fas fa-envelope"></i> ndmassamba03@gmail.com</p>
-                    <p><i class="fab fa-linkedin"></i> linkedin.com/in/massamba-ndiaye-4952a32aa</p>
+                    <h3>Restons en contact</h3>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Adresse</h4>
+                                <p>Pout, Thiès, Sénégal</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Téléphone</h4>
+                                <p>76 356 95 78</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>ndmassamba03@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <p>linkedin.com/in/massamba-ndiaye-4952a32aa</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+                    </div>
                 </div>
+                
                 <form class="contact-form" id="contactForm">
-                    <input type="text" placeholder="Nom complet" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea placeholder="Message" rows="4" required></textarea>
-                    <button type="submit" class="btn">Envoyer</button>
+                    <div class="form-group">
+                        <input type="text" placeholder="Nom complet" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email professionnel" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Sujet">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Votre message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Envoyer le message</button>
                 </form>
             </div>
         </div>
@@ -244,7 +809,13 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Massamba Ndiaye. Tous droits réservés.</p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">M<span class="logo-accent">N</span></span>
+                </div>
+                <p class="footer-text">Ingénieur Réseaux & Cybersécurité - Disponible pour vos projets</p>
+                <p class="copyright">&copy; 2026 Massamba Ndiaye. Tous droits réservés.</p>
+            </div>
         </div>
     </footer>
 
