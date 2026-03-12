@@ -240,5 +240,98 @@ const createDarkModeToggle = () => {
     });
 };
 
-// Uncomment to enable dark mode toggle
-// createDarkModeToggle();
+// Gestionnaire de visualisation des certificats
+let currentCertificate = null;
+
+function viewCertificate(certName, certId) {
+    currentCertificate = { name: certName, id: certId };
+    
+    // Mettre à jour le titre du modal
+    document.getElementById('modal-title').textContent = certName;
+    document.getElementById('certificate-name').textContent = certName;
+    
+    // Simuler le chargement du certificat
+    const display = document.getElementById('certificate-display');
+    
+    // Vous pouvez remplacer ceci par de vraies images de certificats
+    // Exemple avec des placeholders ou des liens vers vos certificats
+    const certificateImages = {
+        'unchk': 'path/to/forcen-cert.jpg',
+        'ccna': 'path/to/ccna-cert.jpg',
+        'ibm': 'path/to/ibm-cert.jpg',
+        'microsoft': 'path/to/microsoft-cert.jpg',
+        'google': 'path/to/google-cert.jpg',
+        'google-pro': 'path/to/google-pro-cert.jpg',
+        'datacamp': 'path/to/datacamp-cert.jpg',
+        'ceh': 'path/to/ceh-cert.jpg'
+    };
+    
+    // Afficher un loader pendant le chargement
+    display.innerHTML = `
+        <div class="certificate-placeholder">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Chargement du certificat...</p>
+        </div>
+    `;
+    
+    // Simuler un délai de chargement (à remplacer par un vrai chargement)
+    setTimeout(() => {
+        // Vérifier si une image existe pour ce certificat
+        if (certificateImages[certId]) {
+            // Afficher l'image du certificat
+            display.innerHTML = `<img src="${certificateImages[certId]}" alt="${certName}" class="certificate-image">`;
+        } else {
+            // Afficher un placeholder
+            display.innerHTML = `
+                <div class="certificate-placeholder">
+                    <i class="fas fa-certificate"></i>
+                    <p>${certName}</p>
+                    <small style="color: var(--gray);">Certificat disponible sur demande</small>
+                </div>
+            `;
+        }
+    }, 1000);
+    
+    // Afficher le modal
+    document.getElementById('certModal').style.display = 'block';
+    
+    // Empêcher le défilement du body
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('certModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+    currentCertificate = null;
+}
+
+function downloadCertificate() {
+    if (!currentCertificate) return;
+    
+    // Simuler un téléchargement
+    alert(`Téléchargement du certificat "${currentCertificate.name}"...`);
+    
+    // Ici vous pouvez ajouter la logique de téléchargement réel
+    // Par exemple : window.open(`/certificates/${currentCertificate.id}.pdf`, '_blank');
+    
+    // Simulation de téléchargement
+    const link = document.createElement('a');
+    link.href = '#'; // Remplacer par le vrai lien du certificat
+    link.download = `${currentCertificate.name}.pdf`;
+    link.click();
+}
+
+// Fermer le modal si on clique en dehors
+window.onclick = function(event) {
+    const modal = document.getElementById('certModal');
+    if (event.target == modal) {
+        closeModal();
+    }
+}
+
+// Fermer le modal avec la touche Echap
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
