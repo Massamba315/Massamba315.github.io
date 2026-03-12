@@ -1,436 +1,187 @@
-// Navigation sticky et active links
-const navbar = document.querySelector('.navbar');
-const navLinks = document.querySelectorAll('.nav-menu a');
-const sections = document.querySelectorAll('section');
+// ==================== CONFIGURATION ====================
+const CONFIG = {
+    pdfPaths: {
+        'unchk': 'certificat/forcen-cybersecurity.pdf',
+        'ccna': 'certificat/ccna-200-301.pdf',
+        'ibm': 'certificat/ibm-cybersecurity.pdf',
+        'microsoft': 'certificat/microsoft-cybersecurity-analyst.pdf',
+        'google': 'certificat/google-play-it-safe.pdf',
+        'google-pro': 'certificat/google-cybersecurity-professional.pdf',
+        'datacamp': 'certificat/datacamp-deep-learning.pdf',
+        'ceh': 'certificat/ceh-certified-ethical-hacker.pdf'
+    }
+};
+
+// ==================== UTILITAIRES ====================
+const $ = selector => document.querySelector(selector);
+const $$ = selector => document.querySelectorAll(selector);
+const showNotif = msg => {
+    const notif = Object.assign(document.createElement('div'), { className: 'notification', innerHTML: `<i class="fas fa-check-circle"></i><span>${msg}</span>` });
+    document.body.appendChild(notif);
+    setTimeout(() => notif.classList.add('show'), 100);
+    setTimeout(() => { notif.classList.remove('show'); setTimeout(() => notif.remove(), 300); }, 3000);
+};
+
+// ==================== NAVIGATION ====================
+const navbar = $('.navbar');
+const navLinks = $$('.nav-menu a');
+const sections = $$('section');
 
 window.addEventListener('scroll', () => {
-    // Sticky navbar effect
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255,255,255,0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-    } else {
-        navbar.style.background = 'rgba(255,255,255,0.95)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
-    }
-
-    // Active navigation links
+    // Sticky navbar
+    navbar.style.cssText = `background: rgba(255,255,255,${window.scrollY > 100 ? 0.98 : 0.95}); box-shadow: 0 2px 20px rgba(0,0,0,0.${window.scrollY > 100 ? 1 : 05})`;
+    
+    // Active links
     let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
-            link.classList.add('active');
-        }
-    });
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href').includes(current)));
 });
 
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-            
-            // Close mobile menu if open
-            const navMenu = document.querySelector('.nav-menu');
-            if (navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-            }
-        }
-    });
-});
+// Smooth scroll
+$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = $(a.getAttribute('href'));
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        $('.nav-menu')?.classList.remove('active');
+    }
+}));
 
-// Mobile menu toggle
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
-
+// Mobile menu
+const navToggle = $('.nav-toggle');
+const navMenu = $('.nav-menu');
 if (navToggle) {
     navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
-        
-        // Animate toggle icon
         const icon = navToggle.querySelector('i');
-        if (navMenu.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
     });
 }
 
-// Form submission
-const contactForm = document.getElementById('contactForm');
+// ==================== FORMULAIRE ====================
+const contactForm = $('#contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', e => {
         e.preventDefault();
+        const btn = contactForm.querySelector('button[type="submit"]');
+        const original = btn.textContent;
+        btn.textContent = 'Envoi en cours...';
+        btn.disabled = true;
         
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Show loading state
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Envoi en cours...';
-        submitBtn.disabled = true;
-        
-        // Simulate form submission (replace with actual API call)
         setTimeout(() => {
-            // Success message
-            alert(`Merci ${data['Nom complet'] || ''} ! Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais.`);
-            
-            // Reset form
+            alert(`Merci ${new FormData(contactForm).get('Nom complet') || ''} ! Message envoyé.`);
             contactForm.reset();
-            
-            // Reset button
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
+            btn.textContent = original;
+            btn.disabled = false;
         }, 1500);
     });
 }
 
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            
-            // Animate progress bars
-            if (entry.target.classList.contains('skills-container')) {
-                const progressBars = entry.target.querySelectorAll('.progress');
-                progressBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
-                });
-            }
+// ==================== ANIMATIONS ====================
+// Fade-in observer
+const fadeObserver = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+        e.target.classList.add('fade-in');
+        if (e.target.classList.contains('skills-container')) {
+            e.target.querySelectorAll('.progress').forEach(p => {
+                const w = p.style.width;
+                p.style.width = '0';
+                setTimeout(() => p.style.width = w, 100);
+            });
         }
-    });
-}, observerOptions);
+    }
+}), { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-// Observe elements for animation
-document.querySelectorAll('.section, .cert-card, .project-card, .skills-category').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
+$$('.section, .cert-card, .project-card, .skills-category').forEach(el => {
+    Object.assign(el.style, { opacity: '0', transform: 'translateY(20px)', transition: 'opacity 0.6s ease, transform 0.6s ease' });
+    fadeObserver.observe(el);
 });
+document.head.insertAdjacentHTML('beforeend', '<style>.fade-in{opacity:1!important;transform:translateY(0)!important}</style>');
 
-// Add fade-in class for animation
-document.head.insertAdjacentHTML('beforeend', `
-    <style>
-        .fade-in {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-    </style>
-`);
-
-// Typing effect for hero subtitle (optional)
-const heroSubtitle = document.querySelector('.hero-subtitle');
+// Typing effect
+const heroSubtitle = $('.hero-subtitle');
 if (heroSubtitle) {
     const text = heroSubtitle.textContent;
     heroSubtitle.textContent = '';
-    
     let i = 0;
-    const typeWriter = () => {
-        if (i < text.length) {
-            heroSubtitle.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
-        }
-    };
-    
-    // Start typing effect after page load
-    window.addEventListener('load', typeWriter);
+    window.addEventListener('load', function type() { if (i < text.length) heroSubtitle.textContent += text[i++]; setTimeout(type, 50); });
 }
 
-// Counter animation for stats
-const statNumbers = document.querySelectorAll('.stat-number');
-const animateCounter = (element, target) => {
-    let current = 0;
-    const increment = target / 50; // Divide animation into 50 steps
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target + (element.textContent.includes('%') ? '%' : '');
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '');
-        }
-    }, 20);
-};
+// Counter animation
+const statsObserver = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+        e.target.querySelectorAll('.stat-number').forEach(stat => {
+            const target = parseInt(stat.textContent);
+            if (!isNaN(target)) {
+                let current = 0;
+                const inc = target / 50;
+                const timer = setInterval(() => {
+                    current += inc;
+                    if (current >= target) {
+                        stat.textContent = target + (stat.textContent.includes('%') ? '%' : '');
+                        clearInterval(timer);
+                    } else stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : '');
+                }, 20);
+            }
+        });
+        statsObserver.unobserve(e.target);
+    }
+}), { threshold: 0.5 });
 
-// Start counter animation when stats section is visible
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const stats = entry.target.querySelectorAll('.stat-number');
-            stats.forEach(stat => {
-                const target = parseInt(stat.textContent);
-                if (!isNaN(target)) {
-                    animateCounter(stat, target);
-                }
-            });
-            statsObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
+const heroStats = $('.hero-stats');
+if (heroStats) statsObserver.observe(heroStats);
 
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) {
-    statsObserver.observe(heroStats);
-}
+// ==================== CERTIFICATS ====================
+let currentCert = null;
 
-// Dark mode toggle (optional)
-const createDarkModeToggle = () => {
-    const toggle = document.createElement('div');
-    toggle.className = 'dark-mode-toggle';
-    toggle.innerHTML = '<i class="fas fa-moon"></i>';
-    toggle.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        background: var(--gradient);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        z-index: 999;
-        box-shadow: var(--shadow);
-        transition: all 0.3s;
-    `;
+function viewCertificate(name, id) {
+    currentCert = { name, id };
+    $('#modal-title').textContent = name;
+    $('#certificate-name').textContent = name;
     
-    document.body.appendChild(toggle);
+    const display = $('#certificate-display');
+    const modal = $('#certModal');
+    const footer = $('.modal-footer');
     
-    toggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const icon = toggle.querySelector('i');
-        if (document.body.classList.contains('dark-mode')) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-    });
-};
-
-// Gestionnaire de visualisation des certificats
-let currentCertificate = null;
-
-function viewCertificate(certName, certId) {
-    currentCertificate = { name: certName, id: certId };
-    
-    // Mettre à jour le titre du modal
-    document.getElementById('modal-title').textContent = certName;
-    document.getElementById('certificate-name').textContent = certName;
-    
-    // Récupérer l'élément d'affichage
-    const display = document.getElementById('certificate-display');
-    
-    // Configuration des chemins PDF
-    const certificatePDFs = {
-        'unchk': 'certificat/forcen-cybersecurity.pdf',
-        'ccna': 'certificat/ccna-200-301.pdf',
-        'ibm': 'certificat/ibm-cybersecurity.pdf',
-        'microsoft': 'certificat/microsoft-cybersecurity-analyst.pdf',
-        'google': 'certificat/google-play-it-safe.pdf',
-        'google-pro': 'certificat/google-cybersecurity-professional.pdf',
-        'datacamp': 'certificat/datacamp-deep-learning.pdf',
-        'ceh': 'certificat/ceh-certified-ethical-hacker.pdf'
-    };
-    
-    // Afficher un loader pendant le chargement
-    display.innerHTML = `
-        <div class="certificate-loader">
-            <i class="fas fa-spinner fa-spin"></i>
-            <p>Chargement du certificat PDF...</p>
-        </div>
-    `;
-    
-    // Afficher le modal immédiatement
-    const modal = document.getElementById('certModal');
+    display.innerHTML = '<div class="certificate-loader"><i class="fas fa-spinner fa-spin"></i><p>Chargement...</p></div>';
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
     
-    // Réinitialiser le footer avec les bons boutons
-    const modalFooter = document.querySelector('.modal-footer');
-    if (modalFooter) {
-        modalFooter.innerHTML = `
-            <button class="btn btn-primary" onclick="downloadCertificate()">
-                <i class="fas fa-download"></i> Télécharger le PDF
-            </button>
-            <button class="btn btn-outline" onclick="closeModal()">
-                <i class="fas fa-times"></i> Fermer
-            </button>
-        `;
-    }
+    const pdfPath = CONFIG.pdfPaths[id];
+    const hasPDF = !!pdfPath;
     
-    // Vérifier si le PDF existe
-    if (certificatePDFs[certId]) {
-        const pdfPath = certificatePDFs[certId];
-        
-        // Créer le viewer PDF (sans les boutons de contrôle supplémentaires)
-        setTimeout(() => {
-            display.innerHTML = `
-                <div class="pdf-container">
-                    <iframe 
-                        src="${pdfPath}" 
-                        class="pdf-viewer" 
-                        frameborder="0"
-                        title="${certName}"
-                    ></iframe>
-                </div>
-            `;
-        }, 500);
-    } else {
-        // Afficher un message si le PDF n'est pas trouvé
-        setTimeout(() => {
-            display.innerHTML = `
-                <div class="certificate-placeholder">
-                    <i class="fas fa-exclamation-triangle" style="color: #f39c12;"></i>
-                    <p>${certName}</p>
-                    <p style="color: var(--gray); font-size: 0.9rem;">Certificat non disponible pour le moment</p>
-                    <small>Veuillez me contacter pour obtenir une copie</small>
-                </div>
-            `;
-            
-            // Désactiver le bouton de téléchargement dans le footer
-            if (modalFooter) {
-                modalFooter.innerHTML = `
-                    <button class="btn btn-primary" onclick="downloadCertificate()" disabled style="opacity: 0.5; cursor: not-allowed;">
-                        <i class="fas fa-download"></i> Non disponible
-                    </button>
-                    <button class="btn btn-outline" onclick="closeModal()">
-                        <i class="fas fa-times"></i> Fermer
-                    </button>
-                `;
-            }
-        }, 500);
-    }
+    footer.innerHTML = hasPDF 
+        ? `<button class="btn btn-primary" onclick="downloadCertificate()"><i class="fas fa-download"></i> Télécharger</button><button class="btn btn-outline" onclick="closeModal()"><i class="fas fa-times"></i> Fermer</button>`
+        : `<button class="btn btn-primary" disabled style="opacity:0.5"><i class="fas fa-download"></i> Non disponible</button><button class="btn btn-outline" onclick="closeModal()"><i class="fas fa-times"></i> Fermer</button>`;
+    
+    setTimeout(() => {
+        display.innerHTML = hasPDF
+            ? `<div class="pdf-container"><iframe src="${pdfPath}" class="pdf-viewer" frameborder="0" title="${name}"></iframe></div>`
+            : `<div class="certificate-placeholder"><i class="fas fa-exclamation-triangle" style="color:#f39c12;"></i><p>${name}</p><p style="color:var(--gray);">Non disponible</p><small>Contactez-moi</small></div>`;
+    }, 500);
 }
 
 function closeModal() {
-    const modal = document.getElementById('certModal');
-    modal.style.display = 'none';
+    $('#certModal').style.display = 'none';
     document.body.style.overflow = 'auto';
-    
-    // Nettoyer l'affichage
-    const display = document.getElementById('certificate-display');
-    display.innerHTML = `
-        <div class="certificate-placeholder">
-            <i class="fas fa-certificate"></i>
-            <p id="certificate-name">Certificat</p>
-        </div>
-    `;
-    
-    // Réinitialiser le footer
-    const modalFooter = document.querySelector('.modal-footer');
-    if (modalFooter) {
-        modalFooter.innerHTML = `
-            <button class="btn btn-primary" onclick="downloadCertificate()">
-                <i class="fas fa-download"></i> Télécharger le PDF
-            </button>
-            <button class="btn btn-outline" onclick="closeModal()">
-                <i class="fas fa-times"></i> Fermer
-            </button>
-        `;
-    }
-    
-    currentCertificate = null;
+    $('#certificate-display').innerHTML = '<div class="certificate-placeholder"><i class="fas fa-certificate"></i><p id="certificate-name">Certificat</p></div>';
+    $('.modal-footer').innerHTML = `<button class="btn btn-primary" onclick="downloadCertificate()"><i class="fas fa-download"></i> Télécharger</button><button class="btn btn-outline" onclick="closeModal()"><i class="fas fa-times"></i> Fermer</button>`;
+    currentCert = null;
 }
 
 function downloadCertificate() {
-    if (!currentCertificate) return;
-    
-    const certificatePDFs = {
-        'unchk': 'certificat/forcen-cybersecurity.pdf',
-        'ccna': 'certificat/ccna-200-301.pdf',
-        'ibm': 'certificat/ibm-cybersecurity.pdf',
-        'microsoft': 'certificat/microsoft-cybersecurity-analyst.pdf',
-        'google': 'certificat/google-play-it-safe.pdf',
-        'google-pro': 'certificat/google-cybersecurity-professional.pdf',
-        'datacamp': 'certificat/datacamp-deep-learning.pdf',
-        'ceh': 'certificat/ceh-certified-ethical-hacker.pdf'
-    };
-    
-    const pdfPath = certificatePDFs[currentCertificate.id];
-    
-    if (pdfPath) {
-        // Créer un lien de téléchargement
-        const link = document.createElement('a');
-        link.href = pdfPath;
-        link.download = `${currentCertificate.name}.pdf`;
+    if (!currentCert) return;
+    const path = CONFIG.pdfPaths[currentCert.id];
+    if (path) {
+        const link = Object.assign(document.createElement('a'), { href: path, download: `${currentCert.name}.pdf` });
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        
-        // Afficher une notification
-        showNotification(`Téléchargement de "${currentCertificate.name}" démarré`);
-    } else {
-        alert('Désolé, ce certificat n\'est pas disponible au téléchargement pour le moment.');
-    }
+        showNotif(`Téléchargement de "${currentCert.name}" démarré`);
+    } else alert('Certificat non disponible');
 }
 
-// Fonction pour afficher une notification
-function showNotification(message) {
-    // Créer l'élément de notification
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.innerHTML = `
-        <i class="fas fa-check-circle"></i>
-        <span>${message}</span>
-    `;
-    
-    // Ajouter au body
-    document.body.appendChild(notification);
-    
-    // Animation d'entrée
-    setTimeout(() => notification.classList.add('show'), 100);
-    
-    // Supprimer après 3 secondes
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
-}
-
-// Fermer le modal si on clique en dehors
-window.onclick = function(event) {
-    const modal = document.getElementById('certModal');
-    if (event.target == modal) {
-        closeModal();
-    }
-}
-
-// Fermer le modal avec la touche Echap
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeModal();
-    }
-});
+// Modal events
+window.onclick = e => { if (e.target == $('#certModal')) closeModal(); };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
