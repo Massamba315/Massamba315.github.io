@@ -256,8 +256,8 @@ function viewCertificate(certName, certId) {
     // Vous pouvez remplacer ceci par de vraies images de certificats
     // Exemple avec des placeholders ou des liens vers vos certificats
     const certificateImages = {
-        'unchk': 'path/to/forcen-cert.jpg',
-        'ccna': 'path/to/ccna-cert.jpg',
+        'unchk': 'certificat/Certificat Cisco Implementation and Administration (CCNA 200-301) - LOGICAL OPERATIONS.pdf',
+        'ccna': 'certificat/Certificat Cisco Implementation and Administration (CCNA 200-301) - LOGICAL OPERATIONS.pdf',
         'ibm': 'path/to/ibm-cert.jpg',
         'microsoft': 'path/to/microsoft-cert.jpg',
         'google': 'path/to/google-cert.jpg',
