@@ -1,110 +1,253 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-<meta charset="UTF-8">
-<title>Massamba Ndiaye | Portfolio</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massamba Ndiaye - Ingénieur Informatique</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">MN</div>
+            <ul class="nav-menu">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#parcours">Parcours</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<header>
-<h1>Massamba Ndiaye</h1>
-<p>Ingénieur Réseaux | Cybersécurité | Développeur</p>
-</header>
+    <!-- Header / Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>MASSAMBA NDIAYE</h1>
+            <p class="hero-subtitle">Ingénieur Informatique | Réseaux & Cybersécurité</p>
+            <p class="hero-location"><i class="fas fa-map-marker-alt"></i> Pout, Thiès, Sénégal</p>
+            <div class="hero-contact">
+                <span><i class="fas fa-phone"></i> 76 356 95 78</span>
+                <span><i class="fas fa-envelope"></i> ndmassamba03@gmail.com</span>
+            </div>
+            <div class="hero-social">
+                <a href="https://www.linkedin.com/in/massamba-ndiaye-4952a32aa" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </header>
 
-<section id="about">
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2><i class="fas fa-user"></i> À propos</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Jeune ingénieur basé dans la région de Thiès, dynamique et doté d'un fort esprit d'apprentissage. Désireux de mettre mes solides compétences en administration systèmes, réseaux et cybersécurité au service des MPME locales dans le cadre de l'initiative du MEFPT.</p>
+                    <p>Objectif : contribuer activement tout en renforçant mon employabilité par une immersion professionnelle concrète.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Certifications</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Projets majeurs</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Master</span>
+                        <span class="stat-label">Réseaux & Sécurité</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<h2>A propos</h2>
+    <!-- Compétences Section -->
+    <section id="competences" class="section bg-light">
+        <div class="container">
+            <h2><i class="fas fa-cogs"></i> Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Réseaux & Systèmes</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check-circle"></i> Administration Linux/Windows Server</li>
+                        <li><i class="fas fa-check-circle"></i> Configuration LAN/WAN</li>
+                        <li><i class="fas fa-check-circle"></i> CCNA (en cours)</li>
+                        <li><i class="fas fa-check-circle"></i> Monitoring (Nagios, Zabbix)</li>
+                        <li><i class="fas fa-check-circle"></i> Wireshark, Analyse réseau</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Cybersécurité</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-shield-alt"></i> Analyse des vulnérabilités</li>
+                        <li><i class="fas fa-shield-alt"></i> Google Cybersecurity</li>
+                        <li><i class="fas fa-shield-alt"></i> Microsoft Security Analyst</li>
+                        <li><i class="fas fa-shield-alt"></i> IBM Cybersecurity</li>
+                        <li><i class="fas fa-shield-alt"></i> FORCEN (en cours)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Développement</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-code"></i> Python, C/C++</li>
+                        <li><i class="fas fa-code"></i> Java</li>
+                        <li><i class="fas fa-code"></i> PyTorch / Deep Learning</li>
+                        <li><i class="fas fa-code"></i> Scripts d'automatisation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<p>
-Diplômé d’un Master en Réseaux, Sécurité et Systèmes Distribués de l’Université Gaston Berger.
-Passionné par la cybersécurité, l’administration des systèmes et la supervision des réseaux.
-</p>
+    <!-- Formation Section -->
+    <section id="parcours" class="section">
+        <div class="container">
+            <h2><i class="fas fa-graduation-cap"></i> Formation</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <div class="timeline-content">
+                        <h3>Master 2 Réseaux, Sécurité et Systèmes Distribués</h3>
+                        <p>Université Gaston Berger (UGB)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2023</div>
+                    <div class="timeline-content">
+                        <h3>Master 1 Réseaux, Sécurité et Systèmes Distribués</h3>
+                        <p>Université Gaston Berger (UGB)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - 2022</div>
+                    <div class="timeline-content">
+                        <h3>Licence 3 Informatique</h3>
+                        <p>Université Gaston Berger (UGB)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019</div>
+                    <div class="timeline-content">
+                        <h3>Baccalauréat Série S2</h3>
+                        <p>Lycée de Pout</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <!-- Certifications -->
+    <section id="certifications" class="section bg-light">
+        <div class="container">
+            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>FORCEN Cybersecurity</h4>
+                    <p>UNCHK | 02/2026 - En cours</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h4>CCNA 200-301</h4>
+                    <p>CEO - Logical Operations</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fab fa-google"></i>
+                    <h4>Google Cybersecurity</h4>
+                    <p>Professional Certificate | 02/2026</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fab fa-microsoft"></i>
+                    <h4>Microsoft Cybersecurity Analyst</h4>
+                    <p>Microsoft | 02/2026</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fab fa-ibm"></i>
+                    <h4>IBM Cybersecurity</h4>
+                    <p>IBM SkillsBuild | 12/2025 - 03/2026</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-brain"></i>
+                    <h4>Deep Learning with PyTorch</h4>
+                    <p>DataCamp | 08/2025 - 02/2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
+    <!-- Projets -->
+    <section id="projets" class="section">
+        <div class="container">
+            <h2><i class="fas fa-project-diagram"></i> Projets</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Audit de sécurité UGB</h3>
+                    <p>Analyse de la sécurité du réseau de l'Université Gaston Berger afin d'identifier les vulnérabilités et proposer des solutions.</p>
+                    <div class="project-tags">
+                        <span>Sécurité</span>
+                        <span>Réseau</span>
+                        <span>Audit</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Supervision réseau</h3>
+                    <p>Mise en place d'un système de monitoring avec Nagios et Zabbix, alertes automatiques et scripts Python d'automatisation.</p>
+                    <div class="project-tags">
+                        <span>Nagios</span>
+                        <span>Zabbix</span>
+                        <span>Python</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-code"></i></div>
+                    <h3>Site web de restauration</h3>
+                    <p>Développement et mise en ligne d'un site web de présentation pour un restaurant.</p>
+                    <div class="project-tags">
+                        <span>HTML/CSS</span>
+                        <span>JavaScript</span>
+                        <span>PHP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<h2>Compétences</h2>
+    <!-- Contact -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2><i class="fas fa-envelope"></i> Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Pout, Thiès, Sénégal</p>
+                    <p><i class="fas fa-phone"></i> 76 356 95 78</p>
+                    <p><i class="fas fa-envelope"></i> ndmassamba03@gmail.com</p>
+                    <p><i class="fab fa-linkedin"></i> linkedin.com/in/massamba-ndiaye-4952a32aa</p>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Nom complet" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" rows="4" required></textarea>
+                    <button type="submit" class="btn">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-<ul>
-<li>Administration Linux et Windows Server</li>
-<li>Configuration réseaux LAN / WAN</li>
-<li>Analyse des vulnérabilités</li>
-<li>Monitoring réseau (Nagios, Zabbix, Wireshark)</li>
-<li>Programmation Python, C/C++, Java</li>
-</ul>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Massamba Ndiaye. Tous droits réservés.</p>
+        </div>
+    </footer>
 
-</section>
-
-<section>
-
-<h2>Projets</h2>
-
-<div class="project">
-
-<h3>Audit de sécurité du réseau de l’UGB</h3>
-
-<p>
-Analyse de la sécurité du réseau de l’Université Gaston Berger afin
-d’identifier les vulnérabilités et proposer des solutions.
-</p>
-
-</div>
-
-<div class="project">
-
-<h3>Supervision réseau avec Nagios et Zabbix</h3>
-
-<p>
-Mise en place d’un système de monitoring réseau avec alertes
-automatiques et scripts Python d’automatisation.
-</p>
-
-</div>
-
-<div class="project">
-
-<h3>Site web de restauration</h3>
-
-<p>
-Développement et mise en ligne d’un site web de présentation
-pour un restaurant.
-</p>
-
-</div>
-
-</section>
-
-<section>
-
-<h2>Certifications</h2>
-
-<ul>
-<li>Google Cybersecurity Professional</li>
-<li>Microsoft Cybersecurity Analyst</li>
-<li>IBM Cybersecurity</li>
-<li>CCNA 200-301 (en cours)</li>
-</ul>
-
-</section>
-
-<section>
-
-<h2>Contact</h2>
-
-<p>Email : ndmassamba03@gmail.com</p>
-<p>LinkedIn : www.linkedin.com/in/massamba-ndiaye</p>
-
-</section>
-
-<footer>
-
-<p>© 2026 Massamba Ndiaye</p>
-
-</footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
